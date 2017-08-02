@@ -20,7 +20,7 @@ namespace Codemanship.CodeCraft.Tests
             var rule = ((ICodeRule) new RuleStub(listener));
             rule.Check(source);
             IEnumerable<IBrokenRule> brokenRules = listener.GetBrokenRules(rule);
-            Assert.That(brokenRules.Count(r => (r.Source == source) && (r.Rule == rule)), Is.EqualTo(1));
+            Assert.That(brokenRules.Count(r => r.Source == source), Is.EqualTo(1));
         }
     }
 
