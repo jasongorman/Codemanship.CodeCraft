@@ -76,6 +76,7 @@
     <Compile Include="DefaultCodeListenerTests.cs" />
     <Compile Include="FieldWrapperTests.cs" />
     <Compile Include="IdentifierLengthRuleTests.cs" />
+    <Compile Include="Integration\AssemblyLoaderTests.cs" />
     <Compile Include="MethodStub.cs" />
     <Compile Include="MethodWrapperTests.cs" />
     <Compile Include="ModuleMother.cs" />
