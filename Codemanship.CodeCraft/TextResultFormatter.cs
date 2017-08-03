@@ -7,7 +7,7 @@ namespace Codemanship.CodeCraft
             ICodeRule rule = brokenRule.Rule;
             ICodeObject source = brokenRule.Source;
 
-            return "RULE: " + rule.Name + " - " + source.CodeObjectType + ": " + source.FullName
+            return "RULE: " + rule.Name + " - " + source.CodeObjectType + ": " + source.DisplayName
                    + "\nADVICE: " + rule.Advice + "\n";
         }
     }

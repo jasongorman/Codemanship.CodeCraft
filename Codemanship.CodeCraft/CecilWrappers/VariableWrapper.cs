@@ -25,9 +25,9 @@ namespace Codemanship.CodeCraft.CecilWrappers
             CheckRule(rules, typeof(ICodeObject), this);
         }
 
-        public string FullName
+        public string DisplayName
         {
-            get { return _method.FullName + "::" + _variable.Name; }
+            get { return _method.DisplayName + "::" + _variable.Name; }
         }
 
         public string CodeObjectType

@@ -22,5 +22,13 @@ namespace Codemanship.CodeCraft.Tests
             IEnumerable<IBrokenRule> brokenRules = listener.GetBrokenRules(rule);
             Assert.That(brokenRules.Count(r => r.Source == source), Is.EqualTo(1));
         }
+
+        [Test]
+        public void WhenNoBrokenRulesForRuleThenReturnsEmptyList()
+        {
+            ICodeListener listener = new DefaultCodeListener();
+            var rule = ((ICodeRule)new RuleStub(listener));
+            Assert.That(listener.GetBrokenRules(rule), Is.Empty);
+        }
     }
 }

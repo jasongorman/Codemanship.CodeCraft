@@ -16,7 +16,7 @@ namespace Codemanship.CodeCraft.Console
     {
         static void Main(string[] args)
         {
-            new CecilAnalyzer(System.Console.Out).Analyze(args);
+            new CecilAnalyzer(System.Console.Out, new AssemblyLoader()).Analyze(args);
         }
     }
 }

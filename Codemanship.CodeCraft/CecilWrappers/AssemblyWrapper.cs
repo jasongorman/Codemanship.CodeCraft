@@ -34,7 +34,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
             types.ForEach(t => t.Walk(rules));
         }
 
-        public string FullName
+        public string DisplayName
         {
             get { return _assembly.FullName; }
         }

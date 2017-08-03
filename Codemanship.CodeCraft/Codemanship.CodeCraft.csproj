@@ -55,10 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CecilWrappers\AssemblyLoader.cs" />
     <Compile Include="CecilWrappers\CecilAnalyzer.cs" />
     <Compile Include="CecilWrappers\AssemblyWrapper.cs" />
     <Compile Include="CecilWrappers\CodeWrapper.cs" />
     <Compile Include="CecilWrappers\FieldWrapper.cs" />
+    <Compile Include="CecilWrappers\ILoader.cs" />
     <Compile Include="CodeListeners\BrokenRule.cs" />
     <Compile Include="CodeListeners\DefaultCodeListener.cs" />
     <Compile Include="IBrokenRule.cs" />

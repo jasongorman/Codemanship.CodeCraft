@@ -43,7 +43,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         }
 
-        public string FullName
+        public string DisplayName
         {
             get { return _method.FullName; }
         }

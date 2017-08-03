@@ -14,10 +14,12 @@ namespace Codemanship.CodeCraft.CecilWrappers
         private readonly List<ICodeListener> _codeListeners;
         private readonly Dictionary<Type, ICodeRule[]> _rulesByCodeObjectType;
         private readonly List<ICodeRule> _rules;
+        private readonly ILoader _assemblyLoader;
 
-        public CecilAnalyzer(TextWriter output)
+        public CecilAnalyzer(TextWriter output, ILoader assemblyLoader)
         {
             _output = output;
+            _assemblyLoader = assemblyLoader;
 
             _codeListeners = new List<ICodeListener>() {new DefaultCodeListener()};
 
@@ -70,10 +72,8 @@ namespace Codemanship.CodeCraft.CecilWrappers
                 {
                     if (Path.GetDirectoryName(arg) != null)
                     {
-                        AssemblyDefinition assembly 
-                            = AssemblyDefinition.ReadAssembly(arg, 
-                            new ReaderParameters(){ ReadSymbols = true, SymbolReaderProvider = new PdbReaderProvider()});
-                        new AssemblyWrapper(assembly).Walk(rules);
+                        var assembly = _assemblyLoader.Load(arg);
+                        assembly.Walk(rules);
                     }
                 }
                 catch (Exception e)

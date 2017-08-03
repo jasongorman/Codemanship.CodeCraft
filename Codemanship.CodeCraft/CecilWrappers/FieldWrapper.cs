@@ -29,7 +29,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
             
         }
 
-        public string FullName
+        public string DisplayName
         {
             get { return _field.FullName.Split(' ')[1]; }
         }

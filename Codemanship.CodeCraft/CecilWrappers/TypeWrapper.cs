@@ -38,7 +38,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
             fields.ForEach(t => t.Walk(rules));
         }
 
-        public string FullName
+        public string DisplayName
         {
             get { return _type.FullName; }
         }

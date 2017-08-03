@@ -3,9 +3,19 @@ using System.Collections.Generic;
 
 namespace Codemanship.CodeCraft.Tests
 {
-    public class CodeObjectStub : ICodeObject
+    public class MethodStub : IMethod
     {
-        public string Name { get; set; }
+        private readonly int _parameterCount;
+
+        public MethodStub(int parameterCount)
+        {
+            _parameterCount = parameterCount;
+        }
+
+        public string Name
+        {
+            get { return ""; }
+        }
 
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
         {
@@ -14,12 +24,12 @@ namespace Codemanship.CodeCraft.Tests
 
         public string DisplayName
         {
-            get { return "FullName.Foo"; }
+            get { return ""; }
         }
 
         public string CodeObjectType
         {
-            get { return "Method"; }
+            get { return ""; }
         }
 
         public bool Ignore
@@ -27,9 +37,9 @@ namespace Codemanship.CodeCraft.Tests
             get { return false; }
         }
 
-        public CodeObjectStub(string name)
+        public int ParameterCount
         {
-            Name = name;
+            get { return _parameterCount; }
         }
     }
 }
