@@ -55,16 +55,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CecilWrappers\CecilAnalyzer.cs" />
     <Compile Include="CecilWrappers\AssemblyWrapper.cs" />
+    <Compile Include="CecilWrappers\CodeWrapper.cs" />
     <Compile Include="CecilWrappers\FieldWrapper.cs" />
     <Compile Include="CodeListeners\BrokenRule.cs" />
     <Compile Include="CodeListeners\DefaultCodeListener.cs" />
     <Compile Include="IBrokenRule.cs" />
     <Compile Include="IParameter.cs" />
+    <Compile Include="IResultFormatter.cs" />
     <Compile Include="IVariable.cs" />
     <Compile Include="IAssembly.cs" />
     <Compile Include="ICodeListener.cs" />
     <Compile Include="ICodeRule.cs" />
+    <Compile Include="Rules\BooleanParameterRule.cs" />
     <Compile Include="Rules\IdentifierLengthRule.cs" />
     <Compile Include="ICodeObject.cs" />
     <Compile Include="IField.cs" />
@@ -75,6 +79,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CecilWrappers\TypeWrapper.cs" />
     <Compile Include="CecilWrappers\VariableWrapper.cs" />
+    <Compile Include="Rules\ParameterCountRule.cs" />
+    <Compile Include="TextResultFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

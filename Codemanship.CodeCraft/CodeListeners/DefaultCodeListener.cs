@@ -18,7 +18,9 @@ namespace Codemanship.CodeCraft.CodeListeners
 
         public IEnumerable<IBrokenRule> GetBrokenRules(ICodeRule rule) 
         {
-            return _brokenRulesByRule[rule];
+            if(_brokenRulesByRule.ContainsKey(rule))
+                return _brokenRulesByRule[rule];
+            return new List<IBrokenRule>();
         }
     }
 }

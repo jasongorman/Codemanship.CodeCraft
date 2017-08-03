@@ -14,8 +14,23 @@ namespace Codemanship.CodeCraft.Rules
         public void Check(ICodeObject source)
         {
             if(source.Name.Length > 20)
-                _codeListeners.ForEach(x => x.RuleBroken(this, source));
+                TellListeners(source);
 
+        }
+
+        private void TellListeners(ICodeObject source)
+        {
+            _codeListeners.ForEach(x => x.RuleBroken(this, source));
+        }
+
+        public string Name
+        {
+            get { return "Identifier Length"; }
+        }
+
+        public string Advice
+        {
+            get { return "Identifiers must be no longer than 20 characters"; }
         }
     }
 }

@@ -25,11 +25,28 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
         {
-            ICodeRule[] codeObjectRules = rules[typeof (ICodeObject)];
-            Array.ForEach(codeObjectRules, rule => rule.Check(this));
+            // No rules checks for assemblies
 
-            List<IType> types = _assembly.MainModule.Types.Select(t => (IType)new TypeWrapper(t)).ToList();
+            List<IType> types =
+                _assembly.MainModule.Types.Select(t => (IType) new TypeWrapper(t))
+                    .Where(c => !c.Ignore)
+                    .ToList();
             types.ForEach(t => t.Walk(rules));
+        }
+
+        public string FullName
+        {
+            get { return _assembly.FullName; }
+        }
+
+        public string CodeObjectType
+        {
+            get { return "Assembly"; }
+        }
+
+        public bool Ignore
+        {
+            get { return false; }
         }
     }
 }

@@ -2,5 +2,6 @@
 {
     public interface IMethod : ICodeObject
     {
+        int ParameterCount { get; }
     }
 }

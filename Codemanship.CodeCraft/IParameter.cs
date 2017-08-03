@@ -2,5 +2,6 @@
 {
     public interface IParameter : ICodeObject
     {
+        bool IsBoolean { get; }
     }
 }

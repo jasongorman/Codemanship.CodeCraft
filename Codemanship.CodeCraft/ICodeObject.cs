@@ -7,5 +7,8 @@ namespace Codemanship.CodeCraft
     {
         string Name { get; }
         void Walk(Dictionary<Type, ICodeRule[]> rules);
+        string FullName { get; }
+        string CodeObjectType { get; }
+        bool Ignore { get;  }
     }
 }

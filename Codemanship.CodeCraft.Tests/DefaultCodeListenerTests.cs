@@ -23,19 +23,4 @@ namespace Codemanship.CodeCraft.Tests
             Assert.That(brokenRules.Count(r => r.Source == source), Is.EqualTo(1));
         }
     }
-
-    public class RuleStub : ICodeRule
-    {
-        private readonly ICodeListener _listener;
-
-        public RuleStub(ICodeListener listener)
-        {
-            _listener = listener;
-        }
-
-        public void Check(ICodeObject source)
-        {
-            _listener.RuleBroken(this, source);
-        }
-    }
 }

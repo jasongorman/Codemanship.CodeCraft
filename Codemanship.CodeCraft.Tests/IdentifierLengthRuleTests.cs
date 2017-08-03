@@ -34,19 +34,4 @@ namespace Codemanship.CodeCraft.Tests
             listener.Verify(x => x.RuleBroken(rule, source), ruleBrokenInvoked);
         }
     }
-
-    public class CodeObjectStub : ICodeObject
-    {
-        public string Name { get; set; }
-
-        public void Walk(Dictionary<Type, ICodeRule[]> rules)
-        {
-            
-        }
-
-        public CodeObjectStub(string name)
-        {
-            Name = name;
-        }
-    }
 }

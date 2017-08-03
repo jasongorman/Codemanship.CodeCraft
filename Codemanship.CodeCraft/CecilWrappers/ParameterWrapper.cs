@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Mono.Cecil;
 
 namespace Codemanship.CodeCraft.CecilWrappers
 {
-    public class ParameterWrapper : IParameter
+    public class ParameterWrapper : CodeWrapper, IParameter
     {
         private readonly ParameterDefinition _parameter;
+        private readonly IMethod _method;
 
-        public ParameterWrapper(ParameterDefinition parameter)
+        public ParameterWrapper(ParameterDefinition parameter, IMethod method)
         {
             _parameter = parameter;
+            _method = method;
         }
 
         public string Name
@@ -20,8 +23,33 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
         {
-            ICodeRule[] codeObjectRules = rules[typeof(ICodeObject)];
-            Array.ForEach(codeObjectRules, rule => rule.Check(this));
+            CheckRule(rules, typeof (ICodeRule), this);
+            CheckRule(rules, typeof (IParameter), this);
+        }
+
+        public string FullName
+        {
+            get { return _method.FullName + "::" + _parameter.Name; }
+        }
+
+        public string CodeObjectType
+        {
+            get { return "Parameter"; }
+        }
+
+        public bool Ignore
+        {
+            get { return false; }
+        }
+
+        public bool IsBoolean
+        {
+            get
+            {
+                TypeReference paramType = _parameter.ParameterType;
+                TypeReference boolean = paramType.Module.TypeSystem.Boolean;
+                return paramType == boolean;
+            }
         }
     }
 }

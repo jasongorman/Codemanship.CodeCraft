@@ -4,7 +4,7 @@ using Mono.Cecil;
 
 namespace Codemanship.CodeCraft.CecilWrappers
 {
-    public class FieldWrapper : IField
+    public class FieldWrapper : CodeWrapper, IField
     {
         private readonly FieldDefinition _field;
 
@@ -20,8 +20,23 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
         {
-            ICodeRule[] codeObjectRules = rules[typeof(ICodeObject)];
-            Array.ForEach(codeObjectRules, rule => rule.Check(this));
+            CheckRule(rules, typeof (ICodeObject), this);
+        }
+
+        public bool Ignore
+        {
+            get { return _field.Name.Contains("BackingField"); } 
+            
+        }
+
+        public string FullName
+        {
+            get { return _field.FullName.Split(' ')[1]; }
+        }
+
+        public string CodeObjectType
+        {
+            get { return "Field"; }
         }
     }
 }

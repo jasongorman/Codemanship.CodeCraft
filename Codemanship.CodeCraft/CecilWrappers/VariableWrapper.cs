@@ -4,13 +4,15 @@ using Mono.Cecil.Cil;
 
 namespace Codemanship.CodeCraft.CecilWrappers
 {
-    public class VariableWrapper : IVariable
+    public class VariableWrapper : CodeWrapper, IVariable
     {
         private readonly VariableDefinition _variable;
+        private readonly IMethod _method;
 
-        public VariableWrapper(VariableDefinition variable)
+        public VariableWrapper(VariableDefinition variable, IMethod method)
         {
             _variable = variable;
+            _method = method;
         }
 
         public string Name
@@ -20,8 +22,22 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
         {
-            ICodeRule[] codeObjectRules = rules[typeof(ICodeObject)];
-            Array.ForEach(codeObjectRules, rule => rule.Check(this));
+            CheckRule(rules, typeof(ICodeObject), this);
+        }
+
+        public string FullName
+        {
+            get { return _method.FullName + "::" + _variable.Name; }
+        }
+
+        public string CodeObjectType
+        {
+            get { return "Variable"; }
+        }
+
+        public bool Ignore
+        {
+            get { return false; }
         }
     }
 }

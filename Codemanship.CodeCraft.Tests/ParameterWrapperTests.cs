@@ -11,7 +11,7 @@ namespace Codemanship.CodeCraft.Tests
         public void ParameterIsNamedCodeObject()
         {
             ParameterDefinition parameter = new ParameterDefinition("x", ParameterAttributes.In, ModuleMother.TypeSystem.Int32);
-            ICodeObject wrappedParameter = new ParameterWrapper(parameter);
+            ICodeObject wrappedParameter = new ParameterWrapper(parameter, null);
             Assert.That(wrappedParameter.Name, Is.EqualTo("x"));
         }
     }
