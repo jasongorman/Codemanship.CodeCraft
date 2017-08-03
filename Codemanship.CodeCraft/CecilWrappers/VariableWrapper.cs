@@ -37,7 +37,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public bool Ignore
         {
-            get { return false; }
+            get { return _variable.Name.Contains("CachedAnonymousMethodDelegate"); }
         }
     }
 }

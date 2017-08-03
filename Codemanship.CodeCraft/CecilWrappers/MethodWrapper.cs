@@ -37,7 +37,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
             if (_method.HasBody)
             {
                 List<IVariable> variables =
-                    _method.Body.Variables.Select(t => (IVariable) new VariableWrapper(t, this)).ToList();
+                    _method.Body.Variables.Select(t => (IVariable) new VariableWrapper(t, this)).Where(v => !v.Ignore).ToList();
                 variables.ForEach(t => t.Walk(rules));
             }
 

@@ -25,7 +25,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public bool Ignore
         {
-            get { return _field.Name.Contains("BackingField"); } 
+            get { return _field.Name.Contains("BackingField") || _field.Name.Contains("CachedAnonymousMethodDelegate"); } 
             
         }
 

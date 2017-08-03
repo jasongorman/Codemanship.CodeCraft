@@ -12,7 +12,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
     {
         private readonly TextWriter _output;
         private readonly List<ICodeListener> _codeListeners;
-        private readonly Dictionary<Type, ICodeRule[]> _rulesByCodeObjectType;
+        private readonly Dictionary<Type, ICodeRule[]> _codeObjectTypeRules;
         private readonly List<ICodeRule> _rules;
         private readonly ILoader _assemblyLoader;
 
@@ -29,7 +29,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
             _rules = new List<ICodeRule>() {identifierLengthRule, parameterCountRule, booleanParamsRule};
 
-            _rulesByCodeObjectType = new Dictionary<Type, ICodeRule[]>
+            _codeObjectTypeRules = new Dictionary<Type, ICodeRule[]>
             {
                 {typeof (ICodeObject), new ICodeRule[] {identifierLengthRule}},
                 {typeof (IMethod), new ICodeRule[]{parameterCountRule} },
@@ -39,7 +39,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public void Analyze(string[] args)
         {
-            WalkAssemblies(args, _rulesByCodeObjectType);
+            WalkAssemblies(args, _codeObjectTypeRules);
             WriteResults(_codeListeners);
         }
 
