@@ -11,7 +11,7 @@ namespace Codemanship.CodeCraft.Tests.CecilWrappers
         public void MethodIsNamedCodeObject()
         {
             MethodDefinition method = new MethodDefinition("DoFoo", MethodAttributes.Public, ModuleMother.TypeSystem.Void);
-            ICodeObject wrappedMethod = new MethodWrapper(method, null);
+            ICodeObject wrappedMethod = new MethodWrapper(method, null, new CecilWrapperFactory());
             Assert.That(wrappedMethod.Name, Is.EqualTo("DoFoo()"));
         }
     }

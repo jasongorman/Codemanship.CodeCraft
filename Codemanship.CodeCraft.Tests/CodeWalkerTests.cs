@@ -20,7 +20,7 @@ namespace Codemanship.CodeCraft.Tests
         {
             var assembly = AssemblyMother.BuildTestAssembly();
 
-            IAssembly wrappedAssembly = new AssemblyWrapper(assembly);
+            IAssembly wrappedAssembly = new AssemblyWrapper(assembly, new CecilWrapperFactory());
 
             var mockListener = new Mock<ICodeListener>();
             var codeListeners = new List<ICodeListener>(){mockListener.Object};

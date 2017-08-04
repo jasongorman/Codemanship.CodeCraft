@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Mono.Cecil;
+using Mono.Cecil.Cil;
 using Mono.Collections.Generic;
 
 namespace Codemanship.CodeCraft.CecilWrappers
@@ -11,7 +12,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
     {
         private readonly MethodDefinition _method;
 
-        public MethodWrapper(MethodDefinition method, ICodeObject parent) : base(parent)
+        public MethodWrapper(MethodDefinition method, ICodeObject parent, IWrapperFactory wrapperFactory) : base(parent, wrapperFactory)
         {
             _method = method;
         }
@@ -33,13 +34,13 @@ namespace Codemanship.CodeCraft.CecilWrappers
             CheckRule(rules, typeof(IMethod), this);
 
             var parameterDefinitions = _method.Parameters;
-            List<ICodeObject> parameters = parameterDefinitions.Select(t => (ICodeObject)new ParameterWrapper(t, this)).Where(p => !p.Ignore).ToList();
+            List<ICodeObject> parameters = parameterDefinitions.Select(t => _wrapperFactory.CreateParameter(t, this)).Where(p => !p.Ignore).ToList();
             parameters.ForEach(t => t.Walk(rules));
 
             if (_method.HasBody)
             {
                 List<ICodeObject> variables =
-                    _method.Body.Variables.Select(t => (ICodeObject) new VariableWrapper(t, this)).Where(v => !v.Ignore).ToList();
+                    _method.Body.Variables.Select(t => _wrapperFactory.CreateVariable(t, this)).Where(v => !v.Ignore).ToList();
                 variables.ForEach(t => t.Walk(rules));
             }
 

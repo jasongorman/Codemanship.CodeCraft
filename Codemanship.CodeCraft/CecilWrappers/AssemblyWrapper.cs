@@ -12,10 +12,12 @@ namespace Codemanship.CodeCraft.CecilWrappers
     public class AssemblyWrapper : IAssembly
     {
         private readonly AssemblyDefinition _assembly;
+        private readonly IWrapperFactory _wrapperFactory;
 
-        public AssemblyWrapper(AssemblyDefinition assembly)
+        public AssemblyWrapper(AssemblyDefinition assembly, IWrapperFactory wrapperFactory)
         {
             _assembly = assembly;
+            _wrapperFactory = wrapperFactory;
         }
 
         public string Name
@@ -27,8 +29,8 @@ namespace Codemanship.CodeCraft.CecilWrappers
         {
             // No rules checks for assemblies
 
-            List<IType> types =
-                _assembly.MainModule.Types.Select(t => (IType) new TypeWrapper(t, null))
+            List<ICodeObject> types =
+                _assembly.MainModule.Types.Select(_wrapperFactory.CreateType)
                     .Where(c => !c.Ignore)
                     .ToList();
             types.ForEach(t => t.Walk(rules));

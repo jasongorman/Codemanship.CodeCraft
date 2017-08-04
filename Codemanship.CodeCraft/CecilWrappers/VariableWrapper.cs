@@ -8,7 +8,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
     {
         private readonly VariableDefinition _variable;
 
-        public VariableWrapper(VariableDefinition variable, ICodeObject parent) : base(parent)
+        public VariableWrapper(VariableDefinition variable, ICodeObject parent) : base(parent, null)
         {
             _variable = variable;
         }

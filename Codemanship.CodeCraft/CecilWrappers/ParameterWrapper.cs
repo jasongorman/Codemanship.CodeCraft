@@ -9,7 +9,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
     {
         private readonly ParameterDefinition _parameter;
 
-        public ParameterWrapper(ParameterDefinition parameter, ICodeObject parent): base(parent)
+        public ParameterWrapper(ParameterDefinition parameter, ICodeObject parent): base(parent, null)
         {
             _parameter = parameter;
         }

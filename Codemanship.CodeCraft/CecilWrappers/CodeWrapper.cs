@@ -6,10 +6,12 @@ namespace Codemanship.CodeCraft.CecilWrappers
     public abstract class CodeWrapper
     {
         protected ICodeObject _parent;
+        protected IWrapperFactory _wrapperFactory;
 
-        protected CodeWrapper(ICodeObject parent)
+        protected CodeWrapper(ICodeObject parent, IWrapperFactory wrapperFactory)
         {
             _parent = parent;
+            _wrapperFactory = wrapperFactory;
         }
 
         public abstract string Name { get; }

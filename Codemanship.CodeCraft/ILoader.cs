@@ -1,6 +1,4 @@
-using Mono.Cecil;
-
-namespace Codemanship.CodeCraft.CecilWrappers
+namespace Codemanship.CodeCraft
 {
     public interface ILoader
     {

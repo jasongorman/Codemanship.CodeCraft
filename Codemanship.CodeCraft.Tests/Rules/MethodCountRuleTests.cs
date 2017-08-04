@@ -28,7 +28,7 @@ namespace Codemanship.CodeCraft.Tests.Rules
             var listener = new Mock<ICodeListener>();
             ICodeRule rule = new MethodCountRule(new List<ICodeListener> {listener.Object});
             var type = BuildClassWithMethods(numberOfMethods);
-            ICodeObject source = new TypeWrapper(type, null);
+            ICodeObject source = new TypeWrapper(type, null, new CecilWrapperFactory());
             rule.Check(source);
             listener.Verify(x => x.RuleBroken(rule, source), expectedInvocations);
         }

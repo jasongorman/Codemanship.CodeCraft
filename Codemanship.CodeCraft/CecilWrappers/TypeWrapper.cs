@@ -11,15 +11,15 @@ namespace Codemanship.CodeCraft.CecilWrappers
         private readonly List<ICodeObject> _methods;
         private readonly List<ICodeObject> _fields;
 
-        public TypeWrapper(TypeDefinition type, ICodeObject parent) : base(parent)
+        public TypeWrapper(TypeDefinition type, ICodeObject parent, IWrapperFactory wrapperFactory) : base(parent, wrapperFactory)
         {
             _type = type;
             _methods = _type.Methods
-                .Select(t => (ICodeObject) new MethodWrapper(t, this))
+                .Select(t => _wrapperFactory.CreateMethod(t, this))
                 .Where(c => !c.Ignore)
                 .ToList();
             _fields = _type.Fields
-                .Select(t => (ICodeObject) new FieldWrapper(t, this))
+                .Select(t => _wrapperFactory.CreateField(t, this))
                 .Where(c => !c.Ignore)
                 .ToList();
         }

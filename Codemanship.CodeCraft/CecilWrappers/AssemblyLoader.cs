@@ -11,7 +11,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
             AssemblyDefinition assembly
                 = AssemblyDefinition.ReadAssembly((string) assemblyPath,
                     new ReaderParameters() {ReadSymbols = true, SymbolReaderProvider = new PdbReaderProvider()});
-            return new AssemblyWrapper(assembly);
+            return new AssemblyWrapper(assembly, new CecilWrapperFactory());
         }
     }
 }

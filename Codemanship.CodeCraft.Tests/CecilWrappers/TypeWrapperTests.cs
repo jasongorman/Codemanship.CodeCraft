@@ -11,7 +11,7 @@ namespace Codemanship.CodeCraft.Tests.CecilWrappers
         public void TypeIsNamedCodeObject()
         {
             TypeDefinition type = new TypeDefinition("XXX", "Foo", TypeAttributes.Class);
-            ICodeObject wrappedType = new TypeWrapper(type, null);
+            ICodeObject wrappedType = new TypeWrapper(type, null, new CecilWrapperFactory());
             Assert.That(wrappedType.Name, Is.EqualTo("Foo"));
         }
     }

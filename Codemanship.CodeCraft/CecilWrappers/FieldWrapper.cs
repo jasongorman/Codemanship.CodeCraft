@@ -8,7 +8,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
     {
         private readonly FieldDefinition _field;
 
-        public FieldWrapper(FieldDefinition field, ICodeObject parent) : base(parent)
+        public FieldWrapper(FieldDefinition field, ICodeObject parent) : base(parent, null)
         {
             _field = field;
         }
