@@ -8,15 +8,13 @@ namespace Codemanship.CodeCraft.CecilWrappers
     public class ParameterWrapper : CodeWrapper, IParameter
     {
         private readonly ParameterDefinition _parameter;
-        private readonly IMethod _method;
 
-        public ParameterWrapper(ParameterDefinition parameter, IMethod method)
+        public ParameterWrapper(ParameterDefinition parameter, ICodeObject parent): base(parent)
         {
             _parameter = parameter;
-            _method = method;
         }
 
-        public string Name
+        public override string Name
         {
             get { return _parameter.Name; }
         }
@@ -25,11 +23,6 @@ namespace Codemanship.CodeCraft.CecilWrappers
         {
             CheckRule(rules, typeof (ICodeRule), this);
             CheckRule(rules, typeof (IParameter), this);
-        }
-
-        public string DisplayName
-        {
-            get { return _method.DisplayName + "::" + _parameter.Name; }
         }
 
         public string CodeObjectType

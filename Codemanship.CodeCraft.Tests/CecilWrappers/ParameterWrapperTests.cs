@@ -2,7 +2,7 @@
 using Mono.Cecil;
 using NUnit.Framework;
 
-namespace Codemanship.CodeCraft.Tests
+namespace Codemanship.CodeCraft.Tests.CecilWrappers
 {
     [TestFixture]
     public class ParameterWrapperTests

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Codemanship.CodeCraft.Tests
+namespace Codemanship.CodeCraft.Tests.Doubles
 {
     public class CodeObjectStub : ICodeObject
     {

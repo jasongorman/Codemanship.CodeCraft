@@ -8,12 +8,12 @@ namespace Codemanship.CodeCraft.CecilWrappers
     {
         private readonly FieldDefinition _field;
 
-        public FieldWrapper(FieldDefinition field)
+        public FieldWrapper(FieldDefinition field, ICodeObject parent) : base(parent)
         {
             _field = field;
         }
 
-        public string Name
+        public override string Name
         {
             get { return _field.Name; }
         }
@@ -27,11 +27,6 @@ namespace Codemanship.CodeCraft.CecilWrappers
         {
             get { return _field.Name.Contains("BackingField") || _field.Name.Contains("CachedAnonymousMethodDelegate"); } 
             
-        }
-
-        public string DisplayName
-        {
-            get { return _field.FullName.Split(' ')[1]; }
         }
 
         public string CodeObjectType

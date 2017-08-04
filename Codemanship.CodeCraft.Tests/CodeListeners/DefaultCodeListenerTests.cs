@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Codemanship.CodeCraft.CodeListeners;
+using Codemanship.CodeCraft.Tests.Doubles;
 using NUnit.Framework;
 
-namespace Codemanship.CodeCraft.Tests
+namespace Codemanship.CodeCraft.Tests.CodeListeners
 {
     [TestFixture]
     public class DefaultCodeListenerTests

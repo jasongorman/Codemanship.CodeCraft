@@ -20,7 +20,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public string Name
         {
-            get { return _assembly.Name.Name; }
+            get { return _assembly.Name.Name.Split(',')[0]; }
         }
 
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
@@ -28,7 +28,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
             // No rules checks for assemblies
 
             List<IType> types =
-                _assembly.MainModule.Types.Select(t => (IType) new TypeWrapper(t))
+                _assembly.MainModule.Types.Select(t => (IType) new TypeWrapper(t, null))
                     .Where(c => !c.Ignore)
                     .ToList();
             types.ForEach(t => t.Walk(rules));

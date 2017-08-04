@@ -7,15 +7,13 @@ namespace Codemanship.CodeCraft.CecilWrappers
     public class VariableWrapper : CodeWrapper, IVariable
     {
         private readonly VariableDefinition _variable;
-        private readonly IMethod _method;
 
-        public VariableWrapper(VariableDefinition variable, IMethod method)
+        public VariableWrapper(VariableDefinition variable, ICodeObject parent) : base(parent)
         {
             _variable = variable;
-            _method = method;
         }
 
-        public string Name
+        public override string Name
         {
             get { return _variable.Name; }
         }
@@ -23,11 +21,6 @@ namespace Codemanship.CodeCraft.CecilWrappers
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
         {
             CheckRule(rules, typeof(ICodeObject), this);
-        }
-
-        public string DisplayName
-        {
-            get { return _method.DisplayName + "::" + _variable.Name; }
         }
 
         public string CodeObjectType

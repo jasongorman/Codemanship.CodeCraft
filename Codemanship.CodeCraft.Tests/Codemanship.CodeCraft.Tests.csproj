@@ -68,25 +68,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyMother.cs" />
-    <Compile Include="AssemblyWrapperTests.cs" />
-    <Compile Include="BooleanParameterRuleTests.cs" />
-    <Compile Include="CecilAnalyzerTests.cs" />
-    <Compile Include="CodeObjectStub.cs" />
+    <Compile Include="CecilWrappers\AssemblyWrapperTests.cs" />
+    <Compile Include="Rules\BooleanParameterRuleTests.cs" />
+    <Compile Include="CecilWrappers\CecilAnalyzerTests.cs" />
+    <Compile Include="Doubles\CodeObjectStub.cs" />
     <Compile Include="CodeWalkerTests.cs" />
-    <Compile Include="DefaultCodeListenerTests.cs" />
-    <Compile Include="FieldWrapperTests.cs" />
-    <Compile Include="IdentifierLengthRuleTests.cs" />
+    <Compile Include="CodeListeners\DefaultCodeListenerTests.cs" />
+    <Compile Include="CecilWrappers\FieldWrapperTests.cs" />
+    <Compile Include="Rules\IdentifierLengthRuleTests.cs" />
     <Compile Include="Integration\AssemblyLoaderTests.cs" />
-    <Compile Include="MethodStub.cs" />
-    <Compile Include="MethodWrapperTests.cs" />
+    <Compile Include="Doubles\MethodStub.cs" />
+    <Compile Include="CecilWrappers\MethodWrapperTests.cs" />
     <Compile Include="ModuleMother.cs" />
-    <Compile Include="ParameterCountRuleTests.cs" />
-    <Compile Include="ParameterWrapperTests.cs" />
+    <Compile Include="Rules\ParameterCountRuleTests.cs" />
+    <Compile Include="CecilWrappers\ParameterWrapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RuleStub.cs" />
+    <Compile Include="Doubles\RuleStub.cs" />
     <Compile Include="TextResultFormatterTests.cs" />
-    <Compile Include="TypeWrapperTests.cs" />
-    <Compile Include="VariableWrapperTests.cs" />
+    <Compile Include="CecilWrappers\TypeWrapperTests.cs" />
+    <Compile Include="CecilWrappers\VariableWrapperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Codemanship.CodeCraft\Codemanship.CodeCraft.csproj">

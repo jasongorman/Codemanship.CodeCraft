@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Codemanship.CodeCraft.CecilWrappers;
+﻿using Codemanship.CodeCraft.CecilWrappers;
 using Mono.Cecil;
 using NUnit.Framework;
 
-namespace Codemanship.CodeCraft.Tests
+namespace Codemanship.CodeCraft.Tests.CecilWrappers
 {
     [TestFixture]
     public class TypeWrapperTests
@@ -16,7 +11,7 @@ namespace Codemanship.CodeCraft.Tests
         public void TypeIsNamedCodeObject()
         {
             TypeDefinition type = new TypeDefinition("XXX", "Foo", TypeAttributes.Class);
-            ICodeObject wrappedType = new TypeWrapper(type);
+            ICodeObject wrappedType = new TypeWrapper(type, null);
             Assert.That(wrappedType.Name, Is.EqualTo("Foo"));
         }
     }

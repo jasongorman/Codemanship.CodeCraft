@@ -9,12 +9,12 @@ namespace Codemanship.CodeCraft.CecilWrappers
     {
         private readonly TypeDefinition _type;
 
-        public TypeWrapper(TypeDefinition type)
+        public TypeWrapper(TypeDefinition type, ICodeObject parent) : base(parent)
         {
             _type = type;
         }
 
-        public string Name
+        public override string Name
         {
             get { return _type.Name; }
         }
@@ -23,24 +23,19 @@ namespace Codemanship.CodeCraft.CecilWrappers
         {
             CheckRule(rules, typeof(ICodeObject), this);
 
-            List<IMethod> methods =
+            List<ICodeObject> methods =
                 _type.Methods
-                    .Select(t => (IMethod) new MethodWrapper(t))
+                    .Select(t => (ICodeObject) new MethodWrapper(t, this))
                     .Where(c => !c.Ignore)
                     .ToList();
             methods.ForEach(t => t.Walk(rules));
 
-            List<IField> fields =
+            List<ICodeObject> fields =
                 _type.Fields
-                    .Select(t => (IField) new FieldWrapper(t))
+                    .Select(t => (ICodeObject) new FieldWrapper(t, this))
                     .Where(c => !c.Ignore)
                     .ToList();
             fields.ForEach(t => t.Walk(rules));
-        }
-
-        public string DisplayName
-        {
-            get { return _type.FullName; }
         }
 
         public string CodeObjectType

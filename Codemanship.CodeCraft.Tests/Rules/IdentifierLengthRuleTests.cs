@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Codemanship.CodeCraft.Rules;
+using Codemanship.CodeCraft.Tests.Doubles;
 using Moq;
 using NUnit.Framework;
 
-namespace Codemanship.CodeCraft.Tests
+namespace Codemanship.CodeCraft.Tests.Rules
 {
     [TestFixture]
     public class IdentifierLengthRuleTests

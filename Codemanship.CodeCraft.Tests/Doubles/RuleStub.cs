@@ -1,4 +1,4 @@
-namespace Codemanship.CodeCraft.Tests
+namespace Codemanship.CodeCraft.Tests.Doubles
 {
     public class RuleStub : ICodeRule
     {
