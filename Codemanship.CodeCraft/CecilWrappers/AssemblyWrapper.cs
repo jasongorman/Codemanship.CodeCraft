@@ -33,20 +33,5 @@ namespace Codemanship.CodeCraft.CecilWrappers
                     .ToList();
             types.ForEach(t => t.Walk(rules));
         }
-
-        public string DisplayName
-        {
-            get { return _assembly.FullName; }
-        }
-
-        public string CodeObjectType
-        {
-            get { return "Assembly"; }
-        }
-
-        public bool Ignore
-        {
-            get { return false; }
-        }
     }
 }

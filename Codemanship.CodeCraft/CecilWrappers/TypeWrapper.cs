@@ -8,10 +8,20 @@ namespace Codemanship.CodeCraft.CecilWrappers
     public class TypeWrapper : CodeWrapper, IType
     {
         private readonly TypeDefinition _type;
+        private readonly List<ICodeObject> _methods;
+        private readonly List<ICodeObject> _fields;
 
         public TypeWrapper(TypeDefinition type, ICodeObject parent) : base(parent)
         {
             _type = type;
+            _methods = _type.Methods
+                .Select(t => (ICodeObject) new MethodWrapper(t, this))
+                .Where(c => !c.Ignore)
+                .ToList();
+            _fields = _type.Fields
+                .Select(t => (ICodeObject) new FieldWrapper(t, this))
+                .Where(c => !c.Ignore)
+                .ToList();
         }
 
         public override string Name
@@ -23,19 +33,8 @@ namespace Codemanship.CodeCraft.CecilWrappers
         {
             CheckRule(rules, typeof(ICodeObject), this);
 
-            List<ICodeObject> methods =
-                _type.Methods
-                    .Select(t => (ICodeObject) new MethodWrapper(t, this))
-                    .Where(c => !c.Ignore)
-                    .ToList();
-            methods.ForEach(t => t.Walk(rules));
-
-            List<ICodeObject> fields =
-                _type.Fields
-                    .Select(t => (ICodeObject) new FieldWrapper(t, this))
-                    .Where(c => !c.Ignore)
-                    .ToList();
-            fields.ForEach(t => t.Walk(rules));
+            _methods.ForEach(t => t.Walk(rules));
+            _fields.ForEach(t => t.Walk(rules));
         }
 
         public string CodeObjectType
@@ -46,6 +45,11 @@ namespace Codemanship.CodeCraft.CecilWrappers
         public bool Ignore
         {
             get { return _type.IsSpecialName; }
+        }
+
+        public int MethodCount
+        {
+            get { return _methods.Count; }
         }
     }
 }

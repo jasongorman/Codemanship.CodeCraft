@@ -16,7 +16,7 @@ namespace Codemanship.CodeCraft.Tests.CecilWrappers
                     "HelloWorld", 
                     ModuleKind.Dll);
 
-            ICodeObject wrappedAssembly = new AssemblyWrapper(assembly);
+            IAssembly wrappedAssembly = new AssemblyWrapper(assembly);
             Assert.That(wrappedAssembly.Name, Is.EqualTo("HelloWorld"));
         }
     }

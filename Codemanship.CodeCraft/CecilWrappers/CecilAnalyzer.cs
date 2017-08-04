@@ -26,12 +26,14 @@ namespace Codemanship.CodeCraft.CecilWrappers
             var identifierLengthRule = new IdentifierLengthRule(_codeListeners);
             var parameterCountRule = new ParameterCountRule(_codeListeners);
             var booleanParamsRule = new BooleanParameterRule(_codeListeners);
+            var methodCountRule = new MethodCountRule(_codeListeners);
 
-            _rules = new List<ICodeRule>() {identifierLengthRule, parameterCountRule, booleanParamsRule};
+            _rules = new List<ICodeRule>() {identifierLengthRule, parameterCountRule, booleanParamsRule, methodCountRule};
 
             _codeObjectTypeRules = new Dictionary<Type, ICodeRule[]>
             {
                 {typeof (ICodeObject), new ICodeRule[] {identifierLengthRule}},
+                {typeof(IType), new ICodeRule[]{methodCountRule}},
                 {typeof (IMethod), new ICodeRule[]{parameterCountRule} },
                 {typeof (IParameter), new ICodeRule[]{booleanParamsRule}}
             };
@@ -68,18 +70,11 @@ namespace Codemanship.CodeCraft.CecilWrappers
         {
             foreach (string arg in args)
             {
-                try
-                {
                     if (Path.GetDirectoryName(arg) != null)
                     {
                         var assembly = _assemblyLoader.Load(arg);
                         assembly.Walk(rules);
                     }
-                }
-                catch (Exception e)
-                {
-                    _output.WriteLine(e.Message);
-                }
             }
         }
     }

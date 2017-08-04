@@ -80,6 +80,7 @@
     <Compile Include="Doubles\MethodStub.cs" />
     <Compile Include="CecilWrappers\MethodWrapperTests.cs" />
     <Compile Include="ModuleMother.cs" />
+    <Compile Include="Rules\MethodCountRuleTests.cs" />
     <Compile Include="Rules\ParameterCountRuleTests.cs" />
     <Compile Include="CecilWrappers\ParameterWrapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

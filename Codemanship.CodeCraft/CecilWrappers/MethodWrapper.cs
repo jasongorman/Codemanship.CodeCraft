@@ -33,7 +33,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
             CheckRule(rules, typeof(IMethod), this);
 
             var parameterDefinitions = _method.Parameters;
-            List<ICodeObject> parameters = parameterDefinitions.Select(t => (ICodeObject)new ParameterWrapper(t, this)).ToList();
+            List<ICodeObject> parameters = parameterDefinitions.Select(t => (ICodeObject)new ParameterWrapper(t, this)).Where(p => !p.Ignore).ToList();
             parameters.ForEach(t => t.Walk(rules));
 
             if (_method.HasBody)
