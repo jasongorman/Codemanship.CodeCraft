@@ -12,15 +12,15 @@ namespace Codemanship.CodeCraft.Tests.Rules
     public class MethodCountRuleTests
     {
         [Test]
-        public void TypeWithMoreThanTenMethodsBreaksRule()
+        public void TypeWithMoreThanSixMethodsBreaksRule()
         {
-            CheckIfRuleBroken(11, Times.Once);
+            CheckIfRuleBroken(7, Times.Once);
         }
 
         [Test]
-        public void TypeWithNoMoreThanTenMethodsDoesNotBreakRule()
+        public void TypeWithNoMoreThanSixMethodsDoesNotBreakRule()
         {
-            CheckIfRuleBroken(10, Times.Never);
+            CheckIfRuleBroken(6, Times.Never);
         }
 
         private void CheckIfRuleBroken(int numberOfMethods, Func<Times> expectedInvocations)

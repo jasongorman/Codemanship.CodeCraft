@@ -14,7 +14,7 @@ namespace Codemanship.CodeCraft.Rules
         public void Check(ICodeObject source)
         {
             var type = (IType) source;
-            if (type.MethodCount > 10)
+            if (type.MethodCount > 6)
             {
                 _codeListeners.ForEach(l => l.RuleBroken(this, source));
             }

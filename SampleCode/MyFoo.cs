@@ -29,6 +29,37 @@ namespace SampleCode
             
         }
 
+        public void MethodWithTooManyBranches()
+        {
+            int x = 0;
+            if (x > -1)
+            {
+                if(x + 2 == 2)
+                {
+                    if (x - 1 == -1)
+                    {
+                        if (x * x == x)
+                        {
+                            x = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void ForEachOnListCountsAsBranch()
+        {
+            List<string> strings = new List<string>(){"x","y","z"};
+            strings.ForEach(s => s.ToUpper());
+            strings.ForEach(s => s.Reverse());
+            strings.ForEach(s => s.ToCharArray());
+        }
+
+        public void DoesThisNewMethodShowUpInBrokenRules()
+        {
+            
+        }
+
         public int PropertyNameTooManyCharacters { get; set; }
     }
 }

@@ -27,14 +27,22 @@ namespace Codemanship.CodeCraft.CecilWrappers
             var parameterCountRule = new ParameterCountRule(_codeListeners);
             var booleanParamsRule = new BooleanParameterRule(_codeListeners);
             var methodCountRule = new MethodCountRule(_codeListeners);
+            var pathCountRule = new PathCountRule(_codeListeners);
 
-            _rules = new List<ICodeRule>() {identifierLengthRule, parameterCountRule, booleanParamsRule, methodCountRule};
+            _rules = new List<ICodeRule>()
+            {
+                identifierLengthRule, 
+                parameterCountRule, 
+                booleanParamsRule, 
+                methodCountRule,
+                pathCountRule
+            };
 
             _codeObjectTypeRules = new Dictionary<Type, ICodeRule[]>
             {
                 {typeof (ICodeObject), new ICodeRule[] {identifierLengthRule}},
                 {typeof(IType), new ICodeRule[]{methodCountRule}},
-                {typeof (IMethod), new ICodeRule[]{parameterCountRule} },
+                {typeof (IMethod), new ICodeRule[]{parameterCountRule,pathCountRule} },
                 {typeof (IParameter), new ICodeRule[]{booleanParamsRule}}
             };
         }

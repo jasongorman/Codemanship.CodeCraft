@@ -26,7 +26,7 @@ namespace Codemanship.CodeCraft.Tests.Rules
         {
             var listener = new Mock<ICodeListener>();
             ICodeRule rule = new ParameterCountRule(new List<ICodeListener>() {listener.Object});
-            ICodeObject source = new MethodStub(parameterCount);
+            ICodeObject source = new MethodStub(1, parameterCount);
             rule.Check(source);
             listener.Verify(x => x.RuleBroken(rule, source), expectedInvocations);
         }

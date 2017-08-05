@@ -14,13 +14,9 @@ namespace Codemanship.CodeCraft.Rules
         public void Check(ICodeObject source)
         {
             if(source.Name.Length > 20)
-                TellListeners(source);
-
-        }
-
-        private void TellListeners(ICodeObject source)
-        {
-            _codeListeners.ForEach(x => x.RuleBroken(this, source));
+            {
+                _codeListeners.ForEach(x => x.RuleBroken(this, source));
+            }
         }
 
         public string Name

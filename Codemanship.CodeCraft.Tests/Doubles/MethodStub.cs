@@ -5,10 +5,12 @@ namespace Codemanship.CodeCraft.Tests.Doubles
 {
     public class MethodStub : IMethod
     {
+        private readonly int _pathCount;
         private readonly int _parameterCount;
 
-        public MethodStub(int parameterCount)
+        public MethodStub(int pathCount, int parameterCount)
         {
+            _pathCount = pathCount;
             _parameterCount = parameterCount;
         }
 
@@ -40,6 +42,11 @@ namespace Codemanship.CodeCraft.Tests.Doubles
         public int ParameterCount
         {
             get { return _parameterCount; }
+        }
+
+        public int PathCount
+        {
+            get { return _pathCount; }
         }
     }
 }

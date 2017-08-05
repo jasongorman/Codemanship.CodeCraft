@@ -32,6 +32,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
         public void Walk(Dictionary<Type, ICodeRule[]> rules)
         {
             CheckRule(rules, typeof(ICodeObject), this);
+            CheckRule(rules, typeof(IType), this);
 
             _methods.ForEach(t => t.Walk(rules));
             _fields.ForEach(t => t.Walk(rules));
@@ -49,7 +50,7 @@ namespace Codemanship.CodeCraft.CecilWrappers
 
         public int MethodCount
         {
-            get { return _methods.Count; }
+            get { return _methods.Count(m => !m.Ignore); }
         }
     }
 }

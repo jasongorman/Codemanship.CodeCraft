@@ -16,7 +16,14 @@ namespace Codemanship.CodeCraft.Console
     {
         static void Main(string[] args)
         {
-            new CecilAnalyzer(System.Console.Out, new AssemblyLoader()).Analyze(args);
+            TextWriter output = System.Console.Out;
+            output.Write(
+                @"Codemanship Code Craft 0.1
+                  Written by Jason Gorman (Copyright 2017)
+                  ");
+            output.WriteLine("Analyzing assemblies...");
+            Array.ForEach(args, arg => output.WriteLine(arg));
+            new CecilAnalyzer(output, new AssemblyLoader()).Analyze(args);
         }
     }
 }

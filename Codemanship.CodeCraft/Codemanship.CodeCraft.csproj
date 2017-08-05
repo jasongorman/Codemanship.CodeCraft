@@ -86,6 +86,7 @@
     <Compile Include="CecilWrappers\VariableWrapper.cs" />
     <Compile Include="Rules\MethodCountRule.cs" />
     <Compile Include="Rules\ParameterCountRule.cs" />
+    <Compile Include="Rules\PathCountRule.cs" />
     <Compile Include="TextResultFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
